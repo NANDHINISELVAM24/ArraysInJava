@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static int factorial(int num) {
+        int fact = 1;
+        for (int i = 1; i <= num; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a number: ");
+        int N = scanner.nextInt();
+        
+        int originalNumber = N;
+        int sumOfFactorials = 0;
+
+        while (N > 0) {
+            int digit = N % 10;
+            sumOfFactorials += factorial(digit);
+            N /= 10;
+        }
+
+        if (sumOfFactorials == originalNumber) {
+            System.out.println("Strong Number");
+        } else {
+            System.out.println("Not Strong Number");
+        }
+        
+        scanner.close();
+    }
+}
