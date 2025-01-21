@@ -1,0 +1,52 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] a = new int[n];
+		for(int i=0; i<n; i++){
+		    a[i] = sc.nextInt();
+		}
+		
+		int m = sc.nextInt();
+		int[] b = new int[m];
+		for(int j=0; j<m; j++){
+		    b[j] = sc.nextInt();
+		}
+		
+		int[] merge = mergeArray(a,b);
+		for(int i=0; i<merge.length; i++){
+		    System.out.print(merge[i]+" ");
+		}
+		
+	}
+	public static int[] mergeArray(int[] a, int[] b){
+	    int[] merge = new int[a.length+b.length];
+	    int i=0, j=0, k=0;
+	    
+	    while(i>a.length && j>b.length){
+	        if(a[i]<=b[j]){
+	            merge[k] = a[i];
+	            k++;
+	            i++;
+	        }
+	        else{
+	            merge[k] = b[j];
+	            k++;
+	            j++;
+	        }
+	    }
+	    while(i<a.length){
+	        merge[k]= a[i];
+	        k++;
+	        i++;
+	    }
+	    while(j<b.length){
+	        merge[k] = b[j];
+	        k++;
+	        j++;
+	    }
+	    return merge;
+	}
+}
